@@ -8,7 +8,7 @@
                 </div>
                 {{-- Ben je aanwezig? --}}
                 <div class=" mb-3">
-                    <p class="text-green-300">Ben je aanwezig?: </p>
+                    <p class="text-green-400">Ben je aanwezig?: </p>
                     <label for="presence_yes" class="text-green-300">Ja</label>
                     <input type="radio" name="presence" id="presence_yes" @if($accomodation->presence == 1)checked @endif value=1>
 
