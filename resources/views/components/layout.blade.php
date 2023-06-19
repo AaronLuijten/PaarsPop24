@@ -4,16 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{asset('graphics/Icon.png')}}" rel="icon" type="image/x-icon">
     <title>PaarsPop</title>
 </head>
 <body class="flex flex-col min-h-screen">
     <nav>
-        <div name="menubar" class="bg-purple-700 w-full h-14 shadow-sm pl-1 border-b-4 border-b-green-400">
+        <div name="menubar" class="lg:bg-purple-700 w-full h-14 shadow-sm pl-1 border-b-4 border-b-green-400">
             <ul class='pt-2 pb-1 flex items-center'>
                 {{-- Welcome --}}
                 @if(Auth::check())
-                <li class="text-white float-left mr-3 pr-3 border border-solid border-transparent flex flex-row">Welkom&NonBreakingSpace;<div class="text-green-400 font-bold">{{Auth::user()->first_name}}</div></li>
+                <li class="text-white float-left mr-3 pr-3 border border-solid border-transparent flex flex-row">Welkom&NonBreakingSpace;<div class="text-green-400 font-bold"><a href="{{route('profileView')}}" class="hover:underline hover:text-green-300">{{Auth::user()->first_name}}</a></div></li>
                 @endif 
                 {{-- home --}}
                 <li class="text-white float-left block mr-3 pr-3 border border-solid border-transparent hover:bg-purple-500 hover:border hover:border-solid rounded-md transition duration-150"><a href="{{route('index')}}">home</a></li>
@@ -53,8 +54,8 @@
                 </div>
                 
                 <div class="flex items-baseline flex-col ml-5 text-green-400 ">
-                    <p><a href="mailto: info.paarspop@gmail.com" class="hover:underline">info.paarspop@gmail.com</a></p>
-                    <p>06-54221833 klik <a href="tel:+310654221833p000" class="hover:underline">hier</a> om te bellen</p>
+                    <p><a href="mailto: paarspop23@gmail.com" class="hover:underline">paarspop23@gmail.com</a></p>
+                    <p><a href="tel:+310654221833p000" class="hover:underline">06-54221833</a></p>
                 </div>
             </div>
         </div>

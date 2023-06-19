@@ -52,3 +52,14 @@ Route::middleware(['auth','admin'])->group(function ()
         Route::get('/info', [AdminController::class, 'showInfo'])->name('showInfo');
     });
 });
+
+// Profile
+Route::middleware(['auth'])->group(function ()
+{
+    Route::prefix('/profile')->group(function ()
+    {
+        Route::get('/', [Controller::class, 'profileView'])->name('profileView');
+        Route::get('/edit', [Controller::class, 'editView'])->name('editView');
+        Route::post('/edit', [Controller::class, 'profileViewPost'])->name('editViewPost');
+    });
+});

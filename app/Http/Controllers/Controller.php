@@ -16,4 +16,14 @@ class Controller extends BaseController
         return view('home.index');
        
     }
+
+    public function profileView()
+    {
+        return view('profile.view');
+    }
+
+    public function editView()
+    {
+        return view('profile.edit');
+    }
 }

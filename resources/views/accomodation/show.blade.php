@@ -57,7 +57,7 @@
                             
                         
                     </div>
-                    <button class="p-1 mt-3 bg-green-400 bg-opacity-90 border font-bold border-black border-solid rounded-md"><a href="{{route('edit', [$accomodation->id])}}">wijzigen</a></button>
+                    <button class="p-1 mt-3 bg-green-400 bg-opacity-90 border font-bold border-black border-solid rounded-md text-white"><a href="{{route('edit', [$accomodation->id])}}">aanpassen</a></button>
                 </div>
             </div>
     @else

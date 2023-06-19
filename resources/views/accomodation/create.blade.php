@@ -38,7 +38,7 @@
                                 <p class="text-green-300">Waarmee blijf je slapen: </p>
                                 <div>
                                     <input type="radio" name="accomodation_type_rad" id="accomodation_tent" value="tent" onchange="changeLabelText(this)">
-                                    <label for="accomodation_tent" id="label_text" class="text-green-300">Tent</label>
+                                    <label for="accomodation_tent" id="label_text" class="text-green-300">tent</label>
                                 </div>
                                 <div>
                                     <input type="radio" name="accomodation_type_rad" id="accomodation_anders" value="anders" onchange="changeLabelText(this)">

@@ -1,7 +1,7 @@
 <x-layout>
     <div class="p-2 flex justify-center">
-        <div class="shadow-md rounded-md bg-purple-400 mt-5 p-3 w-fit flex flex-row justify-center">
-            <form action="" method="POST" class="pl-2 pr-2 pb-2 text-white bg-purple-700 flex flex-col border rounded-md m-0 items-center ">
+        <div class="shadow-2xl rounded-md bg-purple-400 mt-5 p-3 w-fit flex flex-row justify-center">
+            <form action="" method="POST" class="pl-2 pr-2 pb-2 text-white bg-purple-600 flex flex-col border border-transparent rounded-md m-0 items-center ">
                 @csrf
                 <div class="text-green-300">
                     <b>Verblijf wijzigen</b>
@@ -12,7 +12,7 @@
                     <label for="presence_yes" class="text-green-300">Ja</label>
                     <input type="radio" name="presence" id="presence_yes" @if($accomodation->presence == 1)checked @endif value=1>
 
-                    <label for="presence_no" class="text-green-300">Nee, helaas niet..</label>
+                    <label for="presence_no" class="text-green-300">Nee</label>
                     <input type="radio" name="presence" id="presence_no" @if($accomodation->presence == 0)checked @endif value=0>
                 </div>
                 <div id="full_form" style="display: none;" class="items-center p-5">
@@ -31,7 +31,7 @@
                             <p class="text-green-300">Waarmee blijf je slapen: </p>
                             <div>
                                 <input type="radio" name="accomodation_type_rad" id="accomodation_tent" value="tent" @if($accomodation->accomodation_type == 'tent')checked @endif onchange="changeLabelText(this)">
-                                <label for="accomodation_tent" id="label_text" class="text-green-300">Tent</label>
+                                <label for="accomodation_tent" id="label_text" class="text-green-300">tent</label>
                             </div>
                             <div>
                                 <input type="radio" name="accomodation_type_rad" id="accomodation_anders" value="anders" @if($accomodation->accomodation_type != 'tent' && $accomodation->accomodation_type != null)checked @endif onchange="changeLabelText(this)">
@@ -138,7 +138,7 @@
                                         dinner_sun.name = "dinner_sun";
                                     }
                                 }
-
+                                window.addEventListener("load", changeCheckboxName())
                         </script>
                     </div>
                 </div>
