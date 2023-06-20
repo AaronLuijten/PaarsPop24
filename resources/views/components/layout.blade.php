@@ -10,7 +10,7 @@
 </head>
 <body class="flex flex-col min-h-screen">
     <nav>
-        <div name="menubar" class="lg:bg-purple-700 w-full h-14 shadow-sm pl-1 border-b-4 border-b-green-400">
+        <div name="menubar" class="bg-purple-700 w-full text-sm lg:text-xl h-14 shadow-sm pl-1 border-b-4 border-b-green-400">
             <ul class='pt-2 pb-1 flex items-center'>
                 {{-- Welcome --}}
                 @if(Auth::check())
@@ -43,7 +43,7 @@
         </div>
     </article>
 
-    <footer class="bg-purple-700 w-full border-t-4 border-t-green-400 h-fit">
+    <footer class="bg-purple-700 w-full text-sm lg:text-xl border-t-4 border-t-green-400 h-fit">
         <div class=" h-12 flex items-center justify-center text-green-400">
             <p>Made by <a href="mailto: aluijten1011@gmail.com" class="hover:underline">Aaron Luijten</a></p>
         </div>
