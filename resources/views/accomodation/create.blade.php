@@ -1,14 +1,14 @@
 <x-layout>
     <div class="p-2 flex justify-center">
-        <div class="shadow-2xl rounded-md bg-purple-600 mt-5 p-3 w-fit flex flex-row justify-center">
+        <div class="shadow-2xl rounded-md bg-purple-400 mt-5 p-3 w-fit flex flex-row justify-center">
             @if (Auth::check() && Auth::user()->accomodation)
-                <div class="text-green-400 font-bold  p-2 rounded-md flex flex-col items-center" role="alert">
+                <div class="text-green-400 font-bold  p-2 rounded-md flex flex-col items-center bg-purple-600" role="alert">
                    <p>Hey {{Auth::user()->first_name}}, je hebt je verblijf voor dit weekend al doorgegeven!</p> <br>
                    <p>Bekijk 'm <a href="{{route('showacco')}}" class="hover:underline">hier</a></p>
                 </div>
             @else
-            <form action="" method="POST" class="pl-2 pr-2 pb-2 text-white bg-purple-700 flex flex-col border rounded-md m-0 items-center ">
-                <div>
+            <form action="" method="POST" class="pl-2 pr-2 pb-2 text-white bg-purple-600 flex flex-col border border-transparent rounded-md m-0 items-center ">
+                <div class="justify-center">
                     @csrf
                     <div class="text-green-300">
                         <b>Verblijf doorgeven</b>
@@ -19,7 +19,7 @@
                         <label for="presence_yes" class="text-green-300">Ja!</label>
                         <input type="radio" name="presence" id="presence_yes" value=1 @if (old('presence') == 1) checked @endif>
 
-                        <label for="presence_no" class="text-green-300">Nee, helaas niet..</label>
+                        <label for="presence_no" class="text-green-300">Nee</label>
                         <input type="radio" name="presence" id="presence_no" value=0 @if (old('presence') != 1 ) checked @endif>
                     </div>
                     <div id="full_form" style="display: none;" class="items-center ps-5-">

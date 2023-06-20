@@ -1,7 +1,7 @@
 <x-layout>
     <div class="p-2 flex justify-center">
         <div class="shadow-md rounded-md bg-purple-400 mt-5 p-3 w-fit flex flex-row justify-center">
-            <form action="" method="POST" class="pl-2 pr-2 pb-2 text-white flex flex-col border rounded-md m-0 ">
+            <form action="" method="POST" class="pl-2 pr-2 pb-2 text-white flex flex-col rounded-md m-0 ">
                 @csrf
                 <div class="flex justify-center text-green-300">
                     <b>Registreren</b>

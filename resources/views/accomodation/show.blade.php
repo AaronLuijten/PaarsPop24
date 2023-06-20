@@ -4,18 +4,18 @@
         $accomodation = Auth::user()->accomodation  
         @endphp
         <div class="flex justify-center">
-            <div class="bg-purple-600 flex items-center flex-col mt-5 rounded-md shadow-2xl w-fit p-3">
+            <div class="bg-purple-500 flex items-center flex-col mt-5 rounded-md shadow-2xl w-fit p-3">
                 <h2 class="text-green-400 font-bold mb-5">Je weekend bij Paarspop</h2>
                 <div class="flex items-start flex-col">
                     <h2 class="text-green-400 font-bold mb-2">Gegevens:</h2>
-                    <div class="bg-purple-700 p-2 rounded-md font-semibold text-green-400 text-lg w-full mb-4">
+                    <div class="bg-purple-600 p-2 rounded-md font-semibold text-green-400 text-lg w-full mb-4">
                         
                         <p>Naam: {{Auth::user()->first_name}} {{Auth::user()->last_name}} </p>
                         <p>Email: {{Auth::user()->email}}</p>
                         <p>Telefoon nummer: {{Auth::user()->phonenumber ?? 'Geen nummer gevonden'}}</p>
                     </div>
                     <h2 class="text-green-400 font-bold mb-2">Reservering: </h2>
-                    <div class="bg-purple-700 p-2 rounded-md font-semibold text-green-400 text-lg w-full flex justify-center">
+                    <div class="bg-purple-600 p-2 rounded-md font-semibold text-green-400 text-lg w-full flex justify-center">
                         <div>
                             <p>Aanwezig: </p>
                             @if($accomodation->presence != 0)
@@ -63,7 +63,7 @@
     @else
     <div class="flex justify-center">
         <div class="bg-purple-400 flex items-center flex-col mt-5 rounded-md w-fit p-3">
-            <div class="text-green-400 font-bold bg-gray-500 p-2 rounded-md bg-opacity-50 flex flex-col items-center" role="alert">
+            <div class="text-green-400 font-bold bg-purple-700 p-2 rounded-md bg-opacity-50 flex flex-col items-center" role="alert">
                 <h2>Je hebt je verblijf voor dit weekend nog niet doorgegeven</h2>
                 <p>We willen je vragen dat even <a href="{{route('create')}}" class="hover:underline">hier</a> te doen.</p>
             </div>

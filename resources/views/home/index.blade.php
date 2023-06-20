@@ -8,11 +8,8 @@
             <button class="p-1 mt-3 bg-green-400 bg-opacity-90 border font-bold border-black border-solid rounded-md hover:bg-white hover:text-green-500 hover:font-bold hover:scale-105 transition duration-300">
                 <a href="{{route('index')}}">Terug</a>
             </button>
+
         </div>
     </div>
 @endif
-
-
-
-
 </x-layout>
