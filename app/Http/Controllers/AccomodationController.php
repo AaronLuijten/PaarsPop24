@@ -30,8 +30,8 @@ class AccomodationController extends Controller
             'presence' => ['required'],
             'stay_over' => ['required'],
             'accomodation_type' => ['required_if:stay_over,1'],
-            'accomodation_length' => ['required_if:stay_over,1', 'integer', 'max:15'],
-            'accomodation_width' => ['required_if:stay_over,1', 'integer','max:15'],
+            'accomodation_length' => ['required_if:stay_over,1'],
+            'accomodation_width' => ['required_if:stay_over,1'],
             'dinner_sat' => ['nullable'],
             'brunch_sun' => ['nullable'],
             'dinner_sun' => ['nullable'],
@@ -73,22 +73,35 @@ class AccomodationController extends Controller
 
         if(request()->presence == 1)
         {
-            if((empty(request()->number_of_guests_weekend) and empty(request()->number_of_guest_sat) and empty(request()->number_of_guest_sun)))
+            if((empty(request()->number_of_guests_weekend) && empty(request()->number_of_guest_sat) && empty(request()->number_of_guest_sun)))
             {
                 return redirect()->back()->withErrors('Vul een aantal personen in om mee te nemen en op welke dag(en)');
             }
     
-            if(request()->number_of_guests_weekend <= 0  or request()->number_of_guests_weekend >= 50)
+            if((empty(request()->number_of_guest_sat) && empty(request()->number_of_guest_sun)) && request()->number_of_guests_weekend <= 0  || request()->number_of_guests_weekend >= 50)
             {
-                return redirect()->back()->withErrors('Voer een geldig aantal personen in');
+                return redirect()->back()->withErrors('Voer een geldig aantal personen in 1');
             }
-            if(request()->number_of_guest_sat <= 0 or request()->number_of_guest_sat >= 50)
+            if((empty(request()->number_of_guests_weekend) && empty(request()->number_of_guest_sun)) && request()->number_of_guest_sat <= 0 || request()->number_of_guest_sat >= 50)
             {
-                return redirect()->back()->withErrors('Voer een geldig aantal personen in');
+                return redirect()->back()->withErrors('Voer een geldig aantal personen in 2');
             }
-            if(request()->number_of_guest_sun <= 0 or request()->number_of_guest_sun >= 50)
+            if((empty(request()->number_of_guests_weekend) && empty(request()->number_of_guest_sat)) && request()->number_of_guest_sun <= 0 || request()->number_of_guest_sun >= 50)
             {
-                return redirect()->back()->withErrors('Voer een geldig aantal personen in');
+                return redirect()->back()->withErrors('Voer een geldig aantal personen in 3');
+            }
+    
+            if((empty(request()->number_of_guest_sat) && empty(request()->number_of_guest_sun)) && (request()->number_of_guests_weekend >= 0  || request()->number_of_guests_weekend <= 50))
+            {
+                $data['number_of_guests_weekend'] = request()->number_of_guests_weekend;
+            }
+            if((empty(request()->number_of_guests_weekend) && empty(request()->number_of_guest_sun)) && (request()->number_of_guest_sat >= 0 || request()->number_of_guest_sat <= 50))
+            {
+                $data['number_of_guest_sat'] = request()->number_of_guest_sat;
+            }
+            if((empty(request()->number_of_guests_weekend) && empty(request()->number_of_guest_sat)) && (request()->number_of_guest_sun >= 0 || request()->number_of_guest_sun <= 50))
+            {
+                $data['number_of_guest_sun'] = request()->number_of_guest_sun;
             }
         }
         
@@ -114,8 +127,8 @@ class AccomodationController extends Controller
             'presence' => ['required'],
             'stay_over' => ['required'],
             'accomodation_type' => ['required_if:stay_over,1'],
-            'accomodation_length' => ['required_if:stay_over,1', 'integer', 'max:15'],
-            'accomodation_width' => ['required_if:stay_over,1', 'integer', 'max:15'],
+            'accomodation_length' => ['required_if:stay_over,1'],
+            'accomodation_width' => ['required_if:stay_over,1'],
             'number_of_guests_weekend' => [],
             'number_of_guest_sat' => [],
             'number_of_guest_sun' => [],
@@ -189,17 +202,17 @@ class AccomodationController extends Controller
         
 
 
-        if(isset($data['number_of_guests_weekend']) && $data['number_of_guests_weekend'] >= 1)
+        if(isset($data['number_of_guests_weekend']) && ($data['number_of_guests_weekend'] >= 1 && $data['number_of_guests_weekend'] <=50))
         {
             $data['number_of_guest_sat'] = null;
             $data['number_of_guest_sun'] = null;
         }
-        else if(isset($data['number_of_guest_sat']) && $data['number_of_guest_sat'] >= 1)
+        else if(isset($data['number_of_guest_sat']) && ($data['number_of_guest_sat'] >= 1 && $data['number_of_guest_sat']  <=50))
         {
             $data['number_of_guests_weekend'] = null;
             $data['number_of_guest_sun'] = null;
         }
-        else if(isset($data['number_of_guest_sun']) && $data['number_of_guest_sun'] >= 1)
+        else if(isset($data['number_of_guest_sun']) && ($data['number_of_guest_sun'] >= 1 && $data['number_of_guest_sun'] <=50))
         {
             $data['number_of_guests_weekend'] = null;
             $data['number_of_guest_sat'] = null;
@@ -207,5 +220,20 @@ class AccomodationController extends Controller
         
         $accomodation->update($data);
         return redirect()->route('showacco');        
+    }
+
+    public function deleteAc($accomodation)
+    {
+        try
+        {
+            Auth::user()->accomodation->delete();
+            session()->flash('success', 'Reservering verwijderd!');
+            return redirect()->route("showacco");
+        }catch(Exception $e)
+        {
+            echo("Something went wrong trying to delete your accomodation. Exception: " + $e);
+            return redirect()->route('showacco')->withErrors('msg', 'Er is een fout opgetreden, probeer het opnieuw');
+        }
+       
     }
 }

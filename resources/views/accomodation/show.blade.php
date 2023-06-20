@@ -4,7 +4,7 @@
         $accomodation = Auth::user()->accomodation  
         @endphp
         <div class="flex justify-center">
-            <div class="bg-purple-500 flex items-center flex-col mt-5 rounded-md shadow-2xl w-fit p-3">
+            <div class="bg-purple-500 flex items-center text-sm lg:text-xl flex-col mt-5 rounded-md shadow-2xl w-fit p-3">
                 <h2 class="text-green-400 font-bold mb-5">Je weekend bij Paarspop</h2>
                 <div class="flex items-start flex-col">
                     <h2 class="text-green-400 font-bold mb-2">Gegevens:</h2>
@@ -57,15 +57,27 @@
                             
                         
                     </div>
-                    <button class="p-1 mt-3 bg-green-400 bg-opacity-90 border font-bold border-black border-solid rounded-md text-white"><a href="{{route('edit', [$accomodation->id])}}">aanpassen</a></button>
-                </div>
+                    <div>
+                        <button class="mt-2 p-1 text-green-400 border border-solid border-black bg-purple-500 rounded-md  hover:bg-white hover:text-green-500 hover:font-bold hover:scale-105 transition duration-300"><a href="{{route('edit', [$accomodation->id])}}">aanpassen</a></button>
+                        <button class="mt-2 p-1 text-green-400 border border-solid border-black bg-purple-500 rounded-md  hover:bg-white hover:text-red-500 hover:font-bold hover:scale-105 transition duration-300"><a href="{{route('deleteAc', [$accomodation->id])}}">verwijder reservering</a></button>
+                    </div>
+                  </div>
+                    
             </div>
     @else
     <div class="flex justify-center">
-        <div class="bg-purple-400 flex items-center flex-col mt-5 rounded-md w-fit p-3">
+        <div class="bg-purple-400 flex items-center flex-col text-xs lg:text-xl mt-5 rounded-md w-fit p-3">
             <div class="text-green-400 font-bold bg-purple-700 p-2 rounded-md bg-opacity-50 flex flex-col items-center" role="alert">
                 <h2>Je hebt je verblijf voor dit weekend nog niet doorgegeven</h2>
                 <p>We willen je vragen dat even <a href="{{route('create')}}" class="hover:underline">hier</a> te doen.</p>
+            </div>
+            @if($errors->any())
+                @foreach ($errors as $error)
+                    <div class="text-red-500">{{$error}}</div>
+                @endforeach
+            @endif
+            <div class="alert alert-succes">
+                <div class="text-green-400 font-bold">{{session('success')}}</div>
             </div>
         </div>
     </div>

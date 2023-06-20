@@ -67,18 +67,18 @@
                             <div id="presence_when" class="flex flex-col">
                                 <p class="text-green-300">Wanneer ben je er?: </p>
                                 <div>
-                                    <input type="radio" name="presence_day" id="all_weekend" value="weekend" onclick="changeInputName()">
+                                    <input type="radio" name="presence_day" id="all_weekend" value="weekend" onchange="changeInputName()">
                                     <label for="all_weekend">Zaterdag en zondag (22 en 23 juni)</label>
                                 </div>
                                 
                                 
                                 <div>
-                                    <input type="radio" name="presence_day" id="saturday" value="saturday" onclick="changeInputName()">
+                                    <input type="radio" name="presence_day" id="saturday" value="saturday" onchange="changeInputName()">
                                     <label for="saturday">Alleen zaterdag (22 juni)</label>
                                 </div>
 
                                 <div>
-                                    <input type="radio" name="presence_day" id="sunday" value="sunday" onclick="changeInputName()">
+                                    <input type="radio" name="presence_day" id="sunday" value="sunday" onchange="changeInputName()">
                                     <label for="sunday">Alleen zondag (23 juni)</label>
                                 </div>
                             </div>
@@ -103,7 +103,7 @@
                             </div>
                         </div>
                     </div>
-                    <div id="submit_div" style='display: none;'>
+                    <div id="submit_div" style='display: block;'>
                         <input type="submit" value="Opslaan" id="submit" class="text-green-400 p-1 border border-solid border-black bg-purple-500 rounded-md  hover:bg-white hover:text-green-500 hover:font-bold hover:scale-105 transition duration-300">
                     </div>
                     @foreach ($errors->all() as $error)
@@ -203,5 +203,7 @@
                 div.style.display = "none";
             }
         }
+
+        window.addEventListener('load', hiddenDiv())
       </script>
 </x-layout>

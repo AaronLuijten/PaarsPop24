@@ -1,6 +1,6 @@
 <x-layout>
     <div class="p-2 flex justify-center">
-        <div class="shadow-2xl rounded-md bg-purple-400 mt-5 p-3 w-fit flex flex-row justify-center">
+        <div class="shadow-2xl rounded-md bg-purple-400 mt-5 text-sm lg:text-xl p-3 w-fit flex flex-row justify-center">
             <form action="" method="POST" class="pl-2 pr-2 pb-2 text-white bg-purple-600 flex flex-col border border-transparent rounded-md m-0 items-center ">
                 @csrf
                 <div class="text-green-300">

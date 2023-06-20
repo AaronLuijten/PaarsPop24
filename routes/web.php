@@ -32,6 +32,8 @@ Route::middleware(['auth', 'web'])->group(function ()
         Route::get('/edit/{Accomodation}', [AccomodationController::class, 'edit'])->name('edit');
         Route::post('/edit/{Accomodation}', [AccomodationController::class, 'update']);
 
+        Route::get('/delete/{Accomodation}', [AccomodationController::class, 'deleteAc'])->name('deleteAc');
+
         // Profile
         Route::prefix('/profile')->group(function ()
         {   
