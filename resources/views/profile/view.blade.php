@@ -28,7 +28,10 @@
             </div>
             <div class="flex flex-col items-center">
                 <a class="bg-purple-600 rounded-md p-1 text-white font-bold mt-2 hover:bg-purple-400 transition duration-150" href="{{route('showacco')}}">mijn Paarspop weekend</a> 
-                <button class="mt-2 text-green-400 border border-solid border-black bg-purple-500 rounded-md  hover:bg-white hover:text-green-500 hover:font-bold hover:scale-105 transition duration-300"><a href="{{route('editView')}}">aanpassen</a></button> 
+                <div>
+                    <button class="mt-2 text-green-400 border border-solid border-black bg-purple-500 rounded-md  hover:bg-white hover:text-green-500 hover:font-bold hover:scale-105 transition duration-300"><a href="{{route('editView')}}">aanpassen</a></button>
+                    <button class="mt-2 text-green-400 border border-solid border-black bg-purple-500 rounded-md  hover:bg-white hover:text-red-500 hover:font-bold hover:scale-105 transition duration-300"><a href="{{route('deleteProfile')}}">Delete</a></button>
+                </div>
             </div>
                      
         </div>

@@ -43,4 +43,15 @@ class Controller extends BaseController
         $user->update($data);
         return redirect()->route("profileView");
     }
+
+    public function deleteView()
+    {
+        return view('profile.delete');
+    }
+
+    public function deleteConfirmed()
+    {
+        Auth::user()->delete();
+        return redirect()->route('index');
+    } 
 }

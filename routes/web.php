@@ -61,5 +61,8 @@ Route::middleware(['auth'])->group(function ()
         Route::get('/', [Controller::class, 'profileView'])->name('profileView');
         Route::get('/edit', [Controller::class, 'editView'])->name('editView');
         Route::post('/edit', [Controller::class, 'profileViewPost'])->name('editViewPost');
+
+        Route::get('/delete/confirm', [Controller::class, 'deleteView'])->name('deleteProfile');
+        Route::get('/delete', [Controller::class, 'deleteConfirmed'])->name('deleteConfirmed');
     });
 });
