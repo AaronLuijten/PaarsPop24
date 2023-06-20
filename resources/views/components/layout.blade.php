@@ -25,9 +25,6 @@
                 @endif
                 {{-- accomodation --}}
                 <li class="text-white float-left block mr-3 pr-3 border border-solid border-transparent hover:bg-purple-500 hover:border hover:border-solid rounded-md transition duration-150"><a href="{{route('showacco')}}">mijn Paarspop weekend</a></li>
-                @if(request()->routeIs('showacco') or request()->routeIs('create') or request()->routeIs('edit'))
-                    <li class="text-white float-left block mr-3 pr-3 border border-solid border-transparent hover:bg-purple-500 hover:border hover:border-solid rounded-md transition duration-150"><a href="{{route('create')}}">verblijf doorgeven</a></li>
-                @endif
                 @if(Auth::check())
                 <li class="text-white float-right block mr-3 pr-3 border border-solid border-transparent hover:bg-purple-500 hover:border hover:border-solid rounded-md transition duration-150"><a href="{{route('logout')}}">log uit</a></li>
                 @endif

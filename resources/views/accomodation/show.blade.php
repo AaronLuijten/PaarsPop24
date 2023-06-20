@@ -1,5 +1,5 @@
 <x-layout>
-    @if (Auth::user()->accomodation)
+    
         @php
         $accomodation = Auth::user()->accomodation  
         @endphp
@@ -9,12 +9,30 @@
                 <div class="flex items-start flex-col">
                     <h2 class="text-green-400 font-bold mb-2">Gegevens:</h2>
                     <div class="bg-purple-600 p-2 rounded-md font-semibold text-green-400 text-lg w-full mb-4">
-                        
                         <p>Naam: {{Auth::user()->first_name}} {{Auth::user()->last_name}} </p>
                         <p>Email: {{Auth::user()->email}}</p>
                         <p>Telefoon nummer: {{Auth::user()->phonenumber ?? 'Geen nummer gevonden'}}</p>
                     </div>
+                    
                     <h2 class="text-green-400 font-bold mb-2">Reservering: </h2>
+                    @if (!Auth::user()->accomodation)
+                        <div class="bg-purple-400 flex items-center flex-col text-xs lg:text-xl mt-5 rounded-md w-fit p-3">
+                            <div class="text-green-400 font-bold bg-purple-700 p-2 rounded-md bg-opacity-50 flex flex-col items-center" role="alert">
+                                <h2>Je hebt je verblijf voor dit weekend nog niet doorgegeven</h2>
+                                <p>We willen je vragen dat even <a href="{{route('create')}}" class="hover:underline">hier</a> te doen.</p>
+                                
+                            </div>
+                            @if($errors->any())
+                                @foreach ($errors as $error)
+                                    <div class="text-red-500">{{$error}}</div>
+                                @endforeach
+                            @endif
+                            <div class="alert alert-succes">
+                                <div class="text-green-400 font-bold">{{session('success')}}</div>
+                            </div>
+                            
+                        </div>
+                    @else
                     <div class="bg-purple-600 p-2 rounded-md font-semibold text-green-400 text-lg w-full flex justify-center">
                         <div>
                             <p>Aanwezig: </p>
@@ -62,26 +80,8 @@
                         <button class="mt-2 p-1 text-green-400 border border-solid border-black bg-purple-500 rounded-md  hover:bg-white hover:text-red-500 hover:font-bold hover:scale-105 transition duration-300"><a href="{{route('deleteAc', [$accomodation->id])}}">verwijder reservering</a></button>
                     </div>
                   </div>
-                    
+                        @endif
             </div>
-    @else
-    <div class="flex justify-center">
-        <div class="bg-purple-400 flex items-center flex-col text-xs lg:text-xl mt-5 rounded-md w-fit p-3">
-            <div class="text-green-400 font-bold bg-purple-700 p-2 rounded-md bg-opacity-50 flex flex-col items-center" role="alert">
-                <h2>Je hebt je verblijf voor dit weekend nog niet doorgegeven</h2>
-                <p>We willen je vragen dat even <a href="{{route('create')}}" class="hover:underline">hier</a> te doen.</p>
-            </div>
-            @if($errors->any())
-                @foreach ($errors as $error)
-                    <div class="text-red-500">{{$error}}</div>
-                @endforeach
-            @endif
-            <div class="alert alert-succes">
-                <div class="text-green-400 font-bold">{{session('success')}}</div>
-            </div>
-        </div>
-    </div>
-    @endif
     
     </div>
 </x-layout>

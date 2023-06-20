@@ -3,7 +3,7 @@
     $user = Auth::user()
 @endphp
 <div class="flex justify-center w-full">
-    <div class=" bg-purple-400 flex justify-center mt-4 p-2 rounded-2xl">
+    <div class=" bg-purple-400 flex justify-center mt-4 p-2 text-sm lg:text-xl rounded-2xl">
         <div class="flex-col">
             <div class="items-center">
                 <h1 class="p-2 text-green-400 rounded-2xl w-fit bg-purple-600"><b>jouw profiel</b></h1>

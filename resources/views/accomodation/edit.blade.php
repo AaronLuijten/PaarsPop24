@@ -250,8 +250,8 @@
         document.addEventListener("DOMContentLoaded", function() {
             setupCheckboxListener();
             changeLabelText(document.querySelector('input[name="accomodation_type_rad"]:checked'));
-            changeInputName();
             showAccomodationSpecs();
         });
+        window.addEventListener('load', changeInputName())
       </script>
 </x-layout>
