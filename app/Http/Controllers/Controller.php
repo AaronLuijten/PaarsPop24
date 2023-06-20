@@ -7,6 +7,7 @@ use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class Controller extends BaseController
 {
@@ -54,4 +55,36 @@ class Controller extends BaseController
         Auth::user()->delete();
         return redirect()->route('index');
     } 
+
+    public function changePassword()
+    {
+        return view('profile.changePassword');
+    }
+
+    public function TrychangePassword()
+    {
+        if(Auth::check())
+        {
+            $data = request()->validate(
+                [
+                    'password' => [],
+                    'newPassword' => ['required', 'same:newPasswordCon']
+                ]
+                );
+
+            if (Hash::check($data['password'], Auth::user()->password)) 
+            {
+                $data['password'] = Hash::make($data['newPassword']);
+                Auth::user()->update($data);
+                session()->flash('success', 'Password succesfuly changed');
+                return redirect()->route('profileView');
+            }
+            else
+            {
+                return redirect()->back()->withErrors(['msg' => "the old Password doesn't match our records"]);
+            }
+            
+        }
+        return redirect()->route('profileView')->withErrors(['msg' => 'Couldnt change password']);
+    }
 }

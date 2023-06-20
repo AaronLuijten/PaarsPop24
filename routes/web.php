@@ -31,6 +31,25 @@ Route::middleware(['auth', 'web'])->group(function ()
         // edit
         Route::get('/edit/{Accomodation}', [AccomodationController::class, 'edit'])->name('edit');
         Route::post('/edit/{Accomodation}', [AccomodationController::class, 'update']);
+
+        // Profile
+        Route::prefix('/profile')->group(function ()
+        {   
+            // view
+            Route::get('/', [Controller::class, 'profileView'])->name('profileView');
+
+            // edit profile
+            Route::get('/edit', [Controller::class, 'editView'])->name('editView');
+            Route::post('/edit', [Controller::class, 'profileViewPost'])->name('editViewPost');
+
+            // delete profile
+            Route::get('/delete/confirm', [Controller::class, 'deleteView'])->name('deleteProfile');
+            Route::get('/delete', [Controller::class, 'deleteConfirmed'])->name('deleteConfirmed');
+
+            // change password
+            Route::get('/changePassword', [Controller::class, 'changePassword'])->name('changePassword');
+            Route::post('/changePassword', [Controller::class, 'TrychangePassword']);
+        });
     }); 
 });
 Route::get('/',[Controller::class, 'index'])->name('index');
@@ -53,16 +72,4 @@ Route::middleware(['auth','admin'])->group(function ()
     });
 });
 
-// Profile
-Route::middleware(['auth'])->group(function ()
-{
-    Route::prefix('/profile')->group(function ()
-    {
-        Route::get('/', [Controller::class, 'profileView'])->name('profileView');
-        Route::get('/edit', [Controller::class, 'editView'])->name('editView');
-        Route::post('/edit', [Controller::class, 'profileViewPost'])->name('editViewPost');
 
-        Route::get('/delete/confirm', [Controller::class, 'deleteView'])->name('deleteProfile');
-        Route::get('/delete', [Controller::class, 'deleteConfirmed'])->name('deleteConfirmed');
-    });
-});
