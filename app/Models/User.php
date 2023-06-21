@@ -48,6 +48,11 @@ class User extends Authenticatable
 
     public function accomodation()
     {
-    return $this->hasOne(Accomodation::class);
+        return $this->hasOne(Accomodation::class);
+    }
+
+    public function news()
+    {
+        return $this->hasMany(News::class);
     }
 }

@@ -5,6 +5,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AccomodationController;
+use App\Http\Controllers\NewsController;
 use App\Http\Middleware\IsAdmin;
 
 /*
@@ -74,6 +75,27 @@ Route::middleware(['auth','admin'])->group(function ()
         Route::get('/users', [AdminController::class, 'userShow'])->name('userShow');
         Route::get('/user/{User}', [AdminController::class, 'userDetailed'])->name('userDetailed');
         Route::get('/reserveringen', [AdminController::class, 'accomodationShow'])->name('accomodationShow');
+
+        Route::prefix('/news')->group(function ()
+        {   
+            // view all posts
+            Route::get('/', [NewsController::class, 'index'])->name('newsIndex');
+
+            // create
+            Route::get('/create', [NewsController::class, 'newsCreate'])->name('newsCreate');
+            Route::post('/create', [NewsController::class, 'newsStore']);
+
+            // delete
+            Route::get('/delete{new}/confirm', [NewsController::class, 'deleteShow'])->name('deleteNews');
+            Route::get('/delete{new}/confirm/yes', [NewsController::class, 'deleteNews'])->name('deleteConfirm');
+
+            // Update
+            Route::get('/update/{new}', [NewsController::class, 'updateShow'])->name('updateShow');
+            Route::post('/update/{new}', [NewsController::class, 'newsUpdate']);
+
+            // view specific post
+            Route::get('/{news}', [NewsController::class, 'showNews'])->name('showNews');
+        });
     });
 });
 

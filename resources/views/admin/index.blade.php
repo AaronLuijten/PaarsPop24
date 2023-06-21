@@ -6,6 +6,7 @@
               <option value="">Select an option</option>
               <option value="{{route('userShow')}}">Users</option>
               <option value="{{route('accomodationShow')}}">Alle reserveringen</option>
+              <option value="{{route('newsIndex')}}">Nieuws</option>
             </select>
           </div>
           
