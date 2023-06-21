@@ -29,7 +29,7 @@
                 <li class="text-white float-right block mr-3 pr-3 border border-solid border-transparent hover:bg-purple-500 hover:border hover:border-solid rounded-md transition duration-150"><a href="{{route('logout')}}">log uit</a></li>
                 @endif
                 @if(Auth::check() && Auth::user()->admin==1)
-                <li class="text-white float-right block mr-3 pr-3 border border-solid border-transparent hover:bg-purple-500 hover:border hover:border-solid rounded-md transition duration-150"><a href="{{route('showInfo')}}">Admin</a></li>
+                <li class="text-white float-right block mr-3 pr-3 border border-solid border-transparent hover:bg-purple-500 hover:border hover:border-solid rounded-md transition duration-150"><a href="{{route('adminIndex')}}">Admin</a></li>
                 @endif
             </ul>
         </div>

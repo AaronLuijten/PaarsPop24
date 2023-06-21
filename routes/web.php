@@ -70,7 +70,10 @@ Route::middleware(['auth','admin'])->group(function ()
 {
     Route::prefix('/admin')->group(function ()
     {
-        Route::get('/info', [AdminController::class, 'showInfo'])->name('showInfo');
+        Route::get('/', [AdminController::class, 'index'])->name('adminIndex');
+        Route::get('/users', [AdminController::class, 'userShow'])->name('userShow');
+        Route::get('/user/{User}', [AdminController::class, 'userDetailed'])->name('userDetailed');
+        Route::get('/reserveringen', [AdminController::class, 'accomodationShow'])->name('accomodationShow');
     });
 });
 
