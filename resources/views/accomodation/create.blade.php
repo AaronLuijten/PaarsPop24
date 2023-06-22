@@ -37,11 +37,11 @@
                             <div  id="accomodation_specs" style="display: none;">
                                 <p class="text-green-300">Waarmee blijf je slapen: </p>
                                 <div>
-                                    <input type="radio" name="accomodation_type_rad" id="accomodation_tent" value="tent" onchange="changeLabelText(this)">
+                                    <input type="radio" name="accomodation_type" id="accomodation_tent" value="tent" onchange="changeLabelText(this)">
                                     <label for="accomodation_tent" id="label_text" class="text-green-300">tent</label>
                                 </div>
                                 <div>
-                                    <input type="radio" name="accomodation_type_rad" id="accomodation_anders" value="anders" onchange="changeLabelText(this)">
+                                    <input type="radio" name="accomodation_type" id="accomodation_anders" value="anders" onchange="changeLabelText(this)">
                                     <label for="accomodation_anders" id="label_text" class="text-green-300">Anders</label>
                                 </div>
 
@@ -121,7 +121,7 @@
             var radioTent = document.getElementById('accomodation_tent');
             var andersOption = document.getElementById('accomodation_anders_div');
             var andersText = document.getElementById('accomodation_anders_txt')
-            var originalName = 'accomodation_type_rad'
+            var originalName = 'accomodation_type'
             var widthLabel = document.getElementById('accomodation_width');
             var lengthLabel = document.getElementById('accomodation_length');
 
