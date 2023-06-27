@@ -4,7 +4,7 @@
         <h2 class="text-green-400 font-bold">Alle reserveringen: </h2>
         <div class="bg-purple-500 p-2 rounded-md">
             <table>
-                <tr class="border border-black p-1 text-green-400 text-lg">
+                <tr class="border border-black p-1 text-green-400 text-lg bg-purple-600">
                     <th class="border border-black p-1">Reservatie naam</th>
                     <th class="border border-black p-1">Gebruiker ID</th>
                     <th class="border border-black p-1">Reservering ID</th>

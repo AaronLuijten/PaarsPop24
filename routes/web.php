@@ -55,7 +55,15 @@ Route::middleware(['auth', 'web'])->group(function ()
         });
     }); 
 });
+// home
 Route::get('/',[Controller::class, 'index'])->name('index');
+
+// home-news
+Route::prefix('/news')->group(function ()
+{
+    Route::get('/', [NewsController::class, 'showCard'])->name('showCard');
+    Route::get('/{news}', [NewsController::class, 'showArticle'])->name('showArticle');
+});
 
 // login
 Route::get('/auth/login', [AuthController::class, 'login'])->name('login');

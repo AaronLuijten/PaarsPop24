@@ -16,7 +16,7 @@
                     
                     <h2 class="text-green-400 font-bold mb-2">Reservering: </h2>
                     @if (!Auth::user()->accomodation)
-                        <div class="bg-purple-400 flex items-center flex-col text-xs lg:text-xl mt-5 rounded-md w-fit p-3">
+                        <div class="flex items-center flex-col text-xs lg:text-xl mt-5 w-fit p-3">
                             <div class="text-green-400 font-bold bg-purple-700 p-2 rounded-md bg-opacity-50 flex flex-col items-center" role="alert">
                                 <h2>Je hebt je verblijf voor dit weekend nog niet doorgegeven</h2>
                                 <p>We willen je vragen dat even <a href="{{route('create')}}" class="hover:underline">hier</a> te doen.</p>

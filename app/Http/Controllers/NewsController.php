@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Models\News;
 use App\Models\Attachment;
@@ -37,10 +38,14 @@ class NewsController extends Controller
     public function deleteNews($id)
     {
         $news = News::findOrFail($id);
-        $filename = $news->attachment->filename;
-        Storage::disk('public')->delete($filename);
-
-        Attachment::find($news->attachment->id)->delete();
+        if($news->attachment)
+        {
+            $filename = $news->attachment->filename;
+            Storage::disk('public')->delete($filename);
+    
+            Attachment::find($news->attachment->id)->delete();
+        }
+        
         News::find($id)->delete();
         return redirect()->route('newsIndex');
     }
@@ -153,6 +158,25 @@ class NewsController extends Controller
     {
         $news = News::findOrFail($id);
         return view('admin.news.edit',
+        ['news' => $news]);
+    }
+
+    public function showCard()
+    {
+
+        $today = Carbon::now()->format('Y-m-d');
+
+        $news = News::whereDate('uploadDate', '<=', $today)->get();
+        
+        return view('home.news.show',
+        ['newsPosts' => $news]);
+    }
+
+    public function showArticle($id)
+    {
+        $news = News::findOrfail($id);
+
+        return view('home.news.showNews',
         ['news' => $news]);
     }
 }
