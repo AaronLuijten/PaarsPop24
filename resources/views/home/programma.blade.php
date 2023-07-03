@@ -2,8 +2,8 @@
     <div class="flex flex-col items-center">
         <h2 class="font-bold text-green-400">Programma</h2>
         <div class="flex items-row justify-start">
-            <button id='btn_sat' class="bg-purple-500 border-x-2 border-t-2 border-b-0 border-green-400 p-2 rounded-t-md  text-green-400 hover:pb-5 hover:bg-purple-400 hover:font-bold" onclick="changeTab('zaterdag')">Zaterdag</button>
-            <button id='btn_sun' class="bg-purple-500 border-x-2 border-t-2 border-b-0 border-green-400 p-2 rounded-t-md  text-green-400 hover:pb-5 hover:bg-purple-400 hover:font-bold" onclick="changeTab('zondag')">Zondag</button>
+            <button id='btn_sat' class="bg-purple-500 border-x-2 border-t-2 border-b-0 border-green-400 p-2 rounded-t-lg  text-green-400" onclick="changeTab('zaterdag')">Zaterdag</button>
+            <button id='btn_sun' class="bg-purple-500 border-x-2 border-t-2 border-b-0 border-green-400 p-2 rounded-t-lg  text-green-400" onclick="changeTab('zondag')">Zondag</button>
             <script>
                 function changeTab($day)
                 {
@@ -47,9 +47,9 @@
         </div>
             <div class="bg-purple-500 rounded-md p-2 mx-1 mb-4">
                 @php
-                    $style_table = "border border-black bg-purple-600 text-green-400 text-sm lg:text-xl"
+                    $style_table = "border border-black bg-purple-600 text-green-400 p-1 text-sm lg:text-xl"
                 @endphp
-                <table class="{{$style_table}}" id="tab_sat">
+                <table class="border-2 border-green-400 rounded-md" id="tab_sat">
                     <tr class="{{$style_table}}">
                         <th class="border border-black bg-purple-700 font-bold text-sm lg:text-xl">Zaterdag</th>
                         <th class="border border-black bg-purple-700 font-bold text-sm lg:text-xl">programma</th>
@@ -185,7 +185,7 @@
                     </tr>
                 </table>
 
-                <table class="{{$style_table}}" id="tab_sun">
+                <table class="border-2 border-green-400 rounded-md" id="tab_sun">
                     <tr class="{{$style_table}}">
                         <th class="border border-black bg-purple-700 font-bold text-sm lg:text-xl">Zondag</th>
                         <th class="border border-black bg-purple-700 font-bold text-sm lg:text-xl">programma</th>

@@ -25,7 +25,7 @@
             <div class="bg-purple-600 p-2 rounded-md font-semibold text-green-400 text-lg w-fit flex justify-center">
                 @if (!$user->accomodation)
                         <div class="bg-purple-400 flex items-center flex-col text-xs lg:text-base mt-5 rounded-md w-fit p-3">
-                            <h5>gebruiker "{{$user->first_name}} {{$user->last_name}}", heeft nog geen reservering gemaakt</h5>
+                            <h5>gebruiker "{{$user->first_name}} {{$user->last_name}}" heeft nog geen reservering gemaakt</h5>
                         </div>
                     @else
                     @php
@@ -78,9 +78,8 @@
             </div>
             <button class="mt-2 p-1 text-green-400 border border-solid border-black bg-purple-500 rounded-md  hover:bg-white hover:text-green-500 hover:font-bold hover:scale-105 transition duration-300"><a href="{{route('userShow')}}">Terug naar users</a></button>
             <button class="mt-2 p-1 text-green-400 border border-solid border-black bg-purple-500 rounded-md  hover:bg-white hover:text-green-500 hover:font-bold hover:scale-105 transition duration-300"><a href="{{route('adminIndex')}}">Terug naar admin pagina</a></button>
-            </div>
             <button class="mt-2 p-1 text-green-400 border border-solid border-black bg-purple-500 rounded-md  hover:bg-white hover:text-green-500 hover:font-bold hover:scale-105 transition duration-300"><a href="{{route('accomodationShow')}}">Terug naar reservering pagina</a></button>
-        
+        </div>
     </div>
     
 </x-layout>
