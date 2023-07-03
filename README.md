@@ -7,3 +7,6 @@
 
 ## When is PaarsPop24?
 - PaarsPop24 has no set date, we only know it will be in the summer of 2024.
+
+## Why is this more of a WiKi than a ReadMe?
+- I am just passing the time okay. Don't come at me for this.
