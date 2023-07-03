@@ -16,7 +16,11 @@ class Controller extends BaseController
     public function index()
     { 
         return view('home.index');
-       
+    }
+
+    public function lineup()
+    {
+        return view('home.programma');
     }
 
     public function profileView()

@@ -33,7 +33,7 @@
                             
                         </div>
                     @else
-                    <div class="bg-purple-600 p-2 rounded-md font-semibold text-green-400 text-lg w-full flex justify-center">
+                    <div class="bg-purple-600 p-2 rounded-md font-semibold text-green-400 text-sm lg:text-lg w-full flex justify-center">
                         <div>
                             <p>Aanwezig: </p>
                             @if($accomodation->presence != 0)

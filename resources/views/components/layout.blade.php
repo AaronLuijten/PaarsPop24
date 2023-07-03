@@ -10,7 +10,7 @@
 </head>
 <body class="flex flex-col min-h-screen">
     <nav>
-        <div name="menubar" class="bg-purple-700 w-full text-sm lg:text-xl h-14 shadow-sm pl-1 border-b-4 border-b-green-400">
+        <div name="menubar" class="bg-purple-700 w-full text-xs lg:text-xl h-14 shadow-sm pl-1 border-b-4 border-b-green-400">
             <ul class='pt-2 pb-1 flex items-center'>
                 {{-- Welcome --}}
                 @if(Auth::check())

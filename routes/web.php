@@ -58,12 +58,7 @@ Route::middleware(['auth', 'web'])->group(function ()
 // home
 Route::get('/',[Controller::class, 'index'])->name('index');
 
-// home-news
-Route::prefix('/news')->group(function ()
-{
-    Route::get('/', [NewsController::class, 'showCard'])->name('showCard');
-    Route::get('/{news}', [NewsController::class, 'showArticle'])->name('showArticle');
-});
+
 
 // login
 Route::get('/auth/login', [AuthController::class, 'login'])->name('login');
@@ -104,7 +99,20 @@ Route::middleware(['auth','admin'])->group(function ()
             // view specific post
             Route::get('/{news}', [NewsController::class, 'showNews'])->name('showNews');
         });
+
     });
+
+    // Should be moved to the right prefix / location when app launches.
+    // ------------------------------------------------------------------------------------
+    Route::get('/lineup',[Controller::class, 'lineup'])->name('lineup');
+
+    // home-news
+    Route::prefix('/news')->group(function ()
+    {
+        Route::get('/', [NewsController::class, 'showCard'])->name('showCard');
+        Route::get('/{news}', [NewsController::class, 'showArticle'])->name('showArticle');
+    });
+    // ------------------------------------------------------------------------------------
 });
 
 
