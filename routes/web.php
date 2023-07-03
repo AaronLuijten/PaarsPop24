@@ -18,7 +18,8 @@ use App\Http\Middleware\IsAdmin;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+Route::middleware(['auth'])->group(function ()
+{
 // pages only accesible if logged in
 Route::middleware(['auth', 'web'])->group(function ()
 {
@@ -56,18 +57,11 @@ Route::middleware(['auth', 'web'])->group(function ()
     }); 
 });
 // home
-Route::get('/',[Controller::class, 'index'])->name('index');
 
 
 
-// login
-Route::get('/auth/login', [AuthController::class, 'login'])->name('login');
-Route::post('/auth/login', [AuthController::class, 'loginpost']);
-Route::get('/auth/logout', [AuthController::class, 'logout'])->name('logout');
 
-// signup
-Route::get('/auth/signup', [AuthController::class, 'signup'])->name('signup');
-Route::post('/auth/signup', [AuthController::class, 'signuppost']);
+
 
 // Admin
 Route::middleware(['auth','admin'])->group(function ()
@@ -114,5 +108,15 @@ Route::middleware(['auth','admin'])->group(function ()
     });
     // ------------------------------------------------------------------------------------
 });
+});
 
+// login
+Route::get('/auth/login', [AuthController::class, 'login'])->name('login');
+Route::post('/auth/login', [AuthController::class, 'loginpost']);
+Route::get('/auth/logout', [AuthController::class, 'logout'])->name('logout');
 
+// signup
+Route::get('/auth/signup', [AuthController::class, 'signup'])->name('signup');
+Route::post('/auth/signup', [AuthController::class, 'signuppost']);
+
+Route::get('/',[Controller::class, 'index'])->name('index');
