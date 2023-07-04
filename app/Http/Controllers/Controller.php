@@ -8,6 +8,8 @@ use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Carbon;
+use App\Models\News;
 
 class Controller extends BaseController
 {
@@ -15,7 +17,10 @@ class Controller extends BaseController
 
     public function index()
     { 
-        return view('home.index');
+        $today = Carbon::now()->toDateString();
+        $newsPosts = News::whereDate('uploadDate', $today)->get();
+        return view('home.index',
+        ['news' => $newsPosts]);
     }
 
     public function lineup()

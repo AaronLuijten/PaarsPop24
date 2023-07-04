@@ -1,12 +1,15 @@
 <x-layout>
     <div class="flex flex-col items-center m-2">
         <h1 class="font-bold text-green-400 text-base lg:text-xl">Welkom op de officiële pagina voor PaarsPop24!</h1>
-        <div class="bg-purple-500 p-2 mt-2 rounded-md">
-            <button class="mt-2 p-1 text-green-400 border border-solid text-base lg:text-xl border-black bg-purple-600 rounded-md  hover:bg-white hover:text-green-500 hover:font-bold hover:scale-105 transition duration-300 m-2"><a href="{{route('showCard')}}">News</a></button>
-        </div>
 
-        <div class="bg-purple-500 rounded-md p-2 m-2">
+        <div class="bg-purple-500 rounded-md p-2 m-2 flex flex-col items-center text-green-400 font-bold">
             
+            @if ($news)
+            <a href="{{route('showCard')}}" class="hover:underline">Er is nieuws van vandaag!</a>
+            @else
+            <a href="{{route('showCard')}}" class="hover:underline">Nieuws!</a>
+            @endif
+            <a href="{{route('lineup')}}" class="hover:underline">PaarsPop Programma</a>
         </div>
 
         <div>

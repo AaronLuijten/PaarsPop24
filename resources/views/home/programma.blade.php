@@ -45,9 +45,10 @@
                 window.addEventListener('load', displayOnLoad)
             </script>
         </div>
-            <div class="bg-purple-500 rounded-md p-2 mx-1 mb-4">
+            <div class="bg-purple-600 rounded-md p-2 mx-1 mb-4">
                 @php
-                    $style_table = "border border-black bg-purple-600 text-green-400 p-1 text-sm lg:text-xl"
+                    $style_table = "border border-black bg-purple-500 text-green-400 p-1 text-sm lg:text-xl";
+                    $hover = "hover:bg-purple-400";
                 @endphp
                 <table class="border-2 border-green-400 rounded-md" id="tab_sat">
                     <tr class="{{$style_table}}">
@@ -108,14 +109,14 @@
                     </tr>
                     <tr class="{{$style_table}}">
                         <th class="{{$style_table}}">16:00</th>
-                        <th class="{{$style_table}}">S4U</th>
+                        <th class="{{$style_table}} {{$hover}}"><a href="https://www.facebook.com/Stampersgat4U/?locale=nl_NL" target="_blank">S4U</a></th>
                         <th class="{{$style_table}}">Main Stage</th>
                         <th class="{{$style_table}}"></th>
                         <th class="{{$style_table}}"></th>
                     </tr>
                     <tr class="{{$style_table}}">
                         <th class="{{$style_table}}">17:00</th>
-                        <th class="{{$style_table}}">S4U</th>
+                        <th class="{{$style_table}} {{$hover}}"><a href="https://www.facebook.com/Stampersgat4U/?locale=nl_NL" target="_blank">S4U</a></th>
                         <th class="{{$style_table}}">Main Stage</th>
                         <th class="{{$style_table}}">Food Chinees</th>
                         <th class="{{$style_table}}"></th>
@@ -129,14 +130,14 @@
                     </tr>
                     <tr class="{{$style_table}}">
                         <th class="{{$style_table}}">19:00</th>
-                        <th class="{{$style_table}}">No Shoes</th>
+                        <th class="{{$style_table}} {{$hover}}"><a href="https://www.noshoes.nl/site/" target="_blank">No Shoes</a></th>
                         <th class="{{$style_table}}">Main Stage</th>
                         <th class="{{$style_table}}"></th>
                         <th class="{{$style_table}}"></th>
                     </tr>
                     <tr class="{{$style_table}}">
                         <th class="{{$style_table}}">20:00</th>
-                        <th class="{{$style_table}}">No Shoes</th>
+                        <th class="{{$style_table}} {{$hover}}"><a href="https://www.noshoes.nl/site/" target="_blank">No Shoes</a></th>
                         <th class="{{$style_table}}">Main Stage</th>
                         <th class="{{$style_table}}"></th>
                         <th class="{{$style_table}}"></th>
@@ -157,14 +158,14 @@
                     </tr>
                     <tr class="{{$style_table}}">
                         <th class="{{$style_table}}">23:00</th>
-                        <th class="{{$style_table}}"><a href="https://www.45miles.nl/" class="hover:bg-purple-500" target="_blank">45 Miles</a></th>
+                        <th class="{{$style_table}} {{$hover}}"><a href="https://www.45miles.nl/" target="_blank">45 Miles</a></th>
                         <th class="{{$style_table}}">Main Stage</th>
                         <th class="{{$style_table}}"></th>
                         <th class="{{$style_table}}"></th>
                     </tr>
                     <tr class="{{$style_table}}">
                         <th class="{{$style_table}}">00:00</th>
-                        <th class="{{$style_table}}"><a href="https://www.45miles.nl/" class="hover:bg-purple-500" target="_blank">45 Miles</th></a>
+                        <th class="{{$style_table}} {{$hover}}"><a href="https://www.45miles.nl/" target="_blank">45 Miles</th></a>
                         <th class="{{$style_table}}">Main Stage</th>
                         <th class="{{$style_table}}">chips</th>
                         <th class="{{$style_table}}"></th>
@@ -209,28 +210,28 @@
                     </tr>
                     <tr class="{{$style_table}}">
                         <th class="{{$style_table}}">11:00</th>
-                        <th class="{{$style_table}}">Barrel covers</th>
+                        <th class="{{$style_table}} {{$hover}}"><a href="https://www.barrel-covers.nl/" target="_blank">Barrel Covers</a></th>
                         <th class="{{$style_table}}">Lounge Zone</th>
                         <th class="{{$style_table}}">Pannekoeken</th>
                         <th class="{{$style_table}}"></th>
                     </tr>
                     <tr class="{{$style_table}}">
                         <th class="{{$style_table}}">12:00</th>
-                        <th class="{{$style_table}}">Barrel covers</th>
+                        <th class="{{$style_table}} {{$hover}}"><a href="https://www.barrel-covers.nl/" target="_blank">Barrel Covers</a></th>
                         <th class="{{$style_table}}">Lounge Zone</th>
                         <th class="{{$style_table}}">Pannekoeken</th>
                         <th class="{{$style_table}}"></th>
                     </tr>
                     <tr class="{{$style_table}}">
                         <th class="{{$style_table}}">13:00</th>
-                        <th class="{{$style_table}}">Devrn</th>
+                        <th class="{{$style_table}} {{$hover}}"><a href="https://www.facebook.com/denotjes/?locale=nl_NL" target="_blank">Devrn</a></th>
                         <th class="{{$style_table}}">Main Stage</th>
                         <th class="{{$style_table}}"></th>
                         <th class="{{$style_table}}"></th>
                     </tr>
                     <tr class="{{$style_table}}">
                         <th class="{{$style_table}}">14:00</th>
-                        <th class="{{$style_table}}">Devrn</th>
+                        <th class="{{$style_table}} {{$hover}}"><a href="https://www.facebook.com/denotjes/?locale=nl_NL" target="_blank">Devrn</a></th>
                         <th class="{{$style_table}}">Main Stage</th>
                         <th class="{{$style_table}}"></th>
                         <th class="{{$style_table}}"></th>
@@ -244,14 +245,14 @@
                     </tr>
                     <tr class="{{$style_table}}">
                         <th class="{{$style_table}}">16:00</th>
-                        <th class="{{$style_table}}">De manne van de straat</th>
+                        <th class="{{$style_table}} {{$hover}}"><a href="https://www.facebook.com/mannenvandestraat/" target="_blank">De Mannen Van De Straat</a></th>
                         <th class="{{$style_table}}">Main Stage</th>
                         <th class="{{$style_table}}">Food? Litooij HB</th>
                         <th class="{{$style_table}}"></th>
                     </tr>
                     <tr class="{{$style_table}}">
                         <th class="{{$style_table}}">17:00</th>
-                        <th class="{{$style_table}}">De manne van de straat</th>
+                        <th class="{{$style_table}} {{$hover}}"><a href="https://www.facebook.com/mannenvandestraat/" target="_blank">De Mannen Van De Straat</a></th>
                         <th class="{{$style_table}}">Main Stage</th>
                         <th class="{{$style_table}}">Food? Litooij HB</th>
                         <th class="{{$style_table}}"></th>
