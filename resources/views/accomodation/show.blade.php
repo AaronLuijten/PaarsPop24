@@ -76,8 +76,8 @@
                         
                     </div>
                     <div>
-                        <button class="mt-2 p-1 text-green-400 border border-solid border-black bg-purple-500 rounded-md  hover:bg-white hover:text-green-500 hover:font-bold hover:scale-105 transition duration-300"><a href="{{route('edit', [$accomodation->id])}}">aanpassen</a></button>
-                        <button class="mt-2 p-1 text-green-400 border border-solid border-black bg-purple-500 rounded-md  hover:bg-white hover:text-red-500 hover:font-bold hover:scale-105 transition duration-300"><a href="{{route('deleteAc', [$accomodation->id])}}">verwijder reservering</a></button>
+                        <button class="mt-2 p-1 text-green-400 border border-solid border-black bg-purple-600 rounded-md  hover:bg-white hover:text-green-500 hover:font-bold hover:scale-105 transition duration-300"><a href="{{route('edit', [$accomodation->id])}}">aanpassen</a></button>
+                        <button class="mt-2 p-1 text-green-400 border border-solid border-black bg-purple-600 rounded-md  hover:bg-white hover:text-red-500 hover:font-bold hover:scale-105 transition duration-300"><a href="{{route('deleteAc', [$accomodation->id])}}">verwijder reservering</a></button>
                     </div>
                   </div>
                         @endif

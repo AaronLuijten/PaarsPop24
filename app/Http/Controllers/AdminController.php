@@ -37,7 +37,7 @@ class AdminController extends Controller
                 ->orderBy('accomodations.number_of_guest_sat', 'desc')
                 ->orderBy('accomodations.dinner_sat', 'desc')
                 ->orderBy('accomodations.brunch_sun', 'desc')
-                ->orderBy('accomodations.dinner_sat', 'desc')
+                ->orderBy('accomodations.dinner_sun', 'desc')
                 ->get();
         return view('admin.accomodationShow', compact('users'));
     }

@@ -35,7 +35,7 @@
                 </div>
                 
 
-                <input type="submit" value="wijzigingen opslaan" id="submit" class="mt-2 w-fit p-1 text-green-400 border border-solid border-black bg-purple-500 rounded-md  hover:bg-white hover:text-green-500 hover:font-bold hover:scale-105 transition duration-300 m-2">
+                <input type="submit" value="wijzigingen opslaan" id="submit" class="mt-2 w-fit p-1 text-green-400 border border-solid border-black bg-purple-600 rounded-md  hover:bg-white hover:text-green-500 hover:font-bold hover:scale-105 transition duration-300 m-2">
             </form>
         </div>
         @foreach ($errors->all() as $error)

@@ -1,13 +1,13 @@
 <x-layout>
     <div class="p-2 flex justify-center">
-        <div class="shadow-2xl rounded-md bg-purple-400 mt-5 p-3 w-fit flex flex-row justify-center">
+        <div class="shadow-2xl rounded-md bg-purple-500 mt-5 p-3 w-fit flex flex-row justify-center">
             @if (Auth::check() && Auth::user()->accomodation)
                 <div class="text-green-400 font-bold  p-2 rounded-md flex flex-col items-center bg-purple-600" role="alert">
                    <p>Hey {{Auth::user()->first_name}}, je hebt je verblijf voor dit weekend al doorgegeven!</p> <br>
                    <p>Bekijk 'm <a href="{{route('showacco')}}" class="hover:underline">hier</a></p>
                 </div>
             @else
-            <form action="" method="POST" class="pl-2 pr-2 pb-2 text-white bg-purple-600 flex flex-col border border-transparent rounded-md m-0 items-center ">
+            <form action="" method="POST" class="pl-2 pr-2 pb-2 text-white flex flex-col border border-transparent rounded-md m-0 items-center ">
                 <div class="justify-center">
                     @csrf
                     <div class="text-green-300">
@@ -104,7 +104,7 @@
                         </div>
                     </div>
                     <div id="submit_div" style='display: block;'>
-                        <input type="submit" value="Opslaan" id="submit" class="text-green-400 p-1 border border-solid border-black bg-purple-500 rounded-md  hover:bg-white hover:text-green-500 hover:font-bold hover:scale-105 transition duration-300">
+                        <input type="submit" value="Opslaan" id="submit" class="text-green-400 p-1 border border-solid border-black bg-purple-600 rounded-md  hover:bg-white hover:text-green-500 hover:font-bold hover:scale-105 transition duration-300">
                     </div>
                     @foreach ($errors->all() as $error)
                         <div class="text-red-500">{{$error}}</div>

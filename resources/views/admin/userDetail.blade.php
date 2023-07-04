@@ -18,7 +18,11 @@
                     <p>{{$user->email ?? "None"}}</p>
                     <p>{{$user->phonenumber ?? "None"}}</p>
                     <p>{{$user->date_of_birth ?? "None"}}</p>
-                    <p>{{$user->admin ??  "None"}}</p>
+                    <p>@if ($user->admin) 
+                        Ja
+                        @else
+                        Nee
+                    @endif</p>
                 </div>
             </div>
             <h2 class="text-green-400 font-bold mb-2">gebruikers reservering: </h2>
@@ -76,10 +80,12 @@
                     @endif
                     </div>
             </div>
-            <button class="mt-2 p-1 text-green-400 border border-solid border-black bg-purple-500 rounded-md  hover:bg-white hover:text-green-500 hover:font-bold hover:scale-105 transition duration-300"><a href="{{route('userShow')}}">Terug naar users</a></button>
-            <button class="mt-2 p-1 text-green-400 border border-solid border-black bg-purple-500 rounded-md  hover:bg-white hover:text-green-500 hover:font-bold hover:scale-105 transition duration-300"><a href="{{route('adminIndex')}}">Terug naar admin pagina</a></button>
-            <button class="mt-2 p-1 text-green-400 border border-solid border-black bg-purple-500 rounded-md  hover:bg-white hover:text-green-500 hover:font-bold hover:scale-105 transition duration-300"><a href="{{route('accomodationShow')}}">Terug naar reservering pagina</a></button>
-        </div>
+            <div class="flex flex-col items-center">
+                <button class="mt-2 p-1 text-green-400 border border-solid border-black bg-purple-500 rounded-md  hover:bg-white hover:text-green-500 hover:font-bold hover:scale-105 transition duration-300"><a href="{{route('accomodationShow')}}">Terug naar reservering pagina</a></button>    
+                <button class="mt-2 p-1 text-green-400 border border-solid border-black bg-purple-500 rounded-md  hover:bg-white hover:text-green-500 hover:font-bold hover:scale-105 transition duration-300"><a href="{{route('adminIndex')}}">Terug naar admin pagina</a></button>
+                <button class="mt-2 p-1 text-green-400 border border-solid border-black bg-purple-500 rounded-md  hover:bg-white hover:text-green-500 hover:font-bold hover:scale-105 transition duration-300"><a href="{{route('userShow')}}">Terug naar users</a></button>
+                </div>
+            </div>
     </div>
     
 </x-layout>
