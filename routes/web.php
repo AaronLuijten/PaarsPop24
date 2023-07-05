@@ -57,7 +57,7 @@ Route::middleware(['auth', 'web'])->group(function ()
 });
 // home
 Route::get('/',[Controller::class, 'index'])->name('index');
-
+Route::get('/plattegrond', [Controller::class, 'map'])->name('showMap');
 
 
 // login

@@ -93,62 +93,80 @@ class NewsController extends Controller
 
     public function newsUpdate($id)
     {
-        $data = request()->validate([
-            'Title' => ['required', 'max:75'],
-            'content' => ['required'],
-            'uploadDate' => ['date', 'required'],
-            'keepAtt' => ['required'],
-            'attachment' => ['image']
-        ]);
+        
         $oldArticle = News::findOrFail($id);
-        if($data['keepAtt'] == 'new')
+        if($oldArticle->attachment)
         {
-
-            $image = $data['attachment'];
-            unset($data['attachment']);
-
-            $imageNewFileName = date("Ymd Hisms"). "-" . Auth::user()->id. ".". $image->extension();
-
-            Storage::disk('public')->put($imageNewFileName, $image->get());
-
-            $data['user_id'] = Auth::user()->id;
-            if($oldArticle->attachment)
+            $data = request()->validate([
+                'Title' => ['required', 'max:75'],
+                'content' => ['required'],
+                'uploadDate' => ['date', 'required'],
+                'keepAtt' => ['required'],
+                'attachment' => ['image']
+            ]);
+        }
+        else
+        {
+            $data = request()->validate([
+                'Title' => ['required', 'max:75'],
+                'content' => ['required'],
+                'uploadDate' => ['date', 'required'],
+                'keepAtt' => [],
+                'attachment' => ['image']
+            ]);
+        }
+        if($oldArticle->attachment)
+        {
+            if($data['keepAtt'] == 'new')
             {
+    
+                $image = $data['attachment'];
+                unset($data['attachment']);
+    
+                $imageNewFileName = date("Ymd Hisms"). "-" . Auth::user()->id. ".". $image->extension();
+    
+                Storage::disk('public')->put($imageNewFileName, $image->get());
+    
+                $data['user_id'] = Auth::user()->id;
+                if($oldArticle->attachment)
+                {
+                    $oldImgId = $oldArticle->attachment->id;
+                    
+                    $oldAtt = Attachment::findOrFail($oldImgId);
+                    $oldImgName = $oldAtt->filename;
+                    Storage::disk('public')->delete($oldImgName);
+    
+                    $oldArticle->attachment()->update([
+                        'filepath' => 'storage/',
+                        'filename' => $imageNewFileName,
+                    ]);
+                }
+                else
+                {
+                    $oldArticle->attachment()->create([
+                        'filepath' => 'storage/',
+                        'filename' => $imageNewFileName,
+                    ]); 
+                }
+    
+                
+            }
+            if($data['keepAtt'] == 'no')
+            {
+                
                 $oldImgId = $oldArticle->attachment->id;
                 
                 $oldAtt = Attachment::findOrFail($oldImgId);
+                
                 $oldImgName = $oldAtt->filename;
+                
                 Storage::disk('public')->delete($oldImgName);
-
-                $oldArticle->attachment()->update([
-                    'filepath' => 'storage/',
-                    'filename' => $imageNewFileName,
-                ]);
+                $image = $oldArticle->attachment;
+                $image->delete();
+    
             }
-            else
-            {
-                $oldArticle->attachment()->create([
-                    'filepath' => 'storage/',
-                    'filename' => $imageNewFileName,
-                ]); 
-            }
-
-            
         }
-        if($data['keepAtt'] == 'no')
-        {
-            
-            $oldImgId = $oldArticle->attachment->id;
-            
-            $oldAtt = Attachment::findOrFail($oldImgId);
-            
-            $oldImgName = $oldAtt->filename;
-            
-            Storage::disk('public')->delete($oldImgName);
-            $image = $oldArticle->attachment;
-            $image->delete();
-
-        }
+        
 
         $oldArticle->update($data);
         return redirect()->route('newsIndex');
@@ -166,7 +184,7 @@ class NewsController extends Controller
 
         $today = Carbon::now()->format('Y-m-d');
 
-        $news = News::whereDate('uploadDate', '<=', $today)->get();
+        $news = News::whereDate('uploadDate', '<=', $today)->orderBy('uploadDate', 'desc')->get();
         
         return view('home.news.show',
         ['newsPosts' => $news]);

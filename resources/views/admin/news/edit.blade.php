@@ -14,7 +14,10 @@
                 <input type="date" id="uploadDate" name="uploadDate" value="{{$news->uploadDate}}" class="text-purple-400 text-base focus:bg-purple-400 focus:text-green-400 transition duration-300 mb-3">
 
                 <label for="attachment">Foto (optioneel): </label>
-                <input type="file" name="attachment" id="attachment" class="mb-3" accept="image/*" value="{{old('attachment')}}">
+                <input type="file" name="attachment" id="attachment" class="mb-3" accept="image/*" value="">
+                @if ($news->attachment)
+                    <p>Huidige foto: {{$news->attachment->filename}}</p>
+                @endif
 
                 <div class="flex flex-col items-start">
                     <div>

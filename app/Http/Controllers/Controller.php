@@ -19,8 +19,21 @@ class Controller extends BaseController
     { 
         $today = Carbon::now()->toDateString();
         $newsPosts = News::whereDate('uploadDate', $today)->get();
-        return view('home.index',
-        ['news' => $newsPosts]);
+        if(!$newsPosts->isEmpty())
+        {
+            return view('home.index',
+            ['news' => $newsPosts]);
+        }
+        else
+        {
+            return view('home.index');
+        }
+        
+    }
+
+    public function map()
+    {
+        return view('home.festivalMap');
     }
 
     public function lineup()
